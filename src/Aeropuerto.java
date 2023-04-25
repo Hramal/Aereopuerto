@@ -39,7 +39,6 @@ public class Aeropuerto {
                 System.out.println(vuelo);
             }
         }
-
     }
 
     /**
@@ -88,7 +87,18 @@ public class Aeropuerto {
      * @param destino Destino del que se debe sacar la estadistica
      */
     public void estadisticaDestino(String destino) {
+        int cantidadVuelos = 0;
+        for (String aereolinea : vuelos.keySet()) {
+            for (Vuelo vuelo : vuelos.get(aereolinea)) {
+                if(vuelo.getDestino().equals(destino)){
+                    cantidadVuelos++;
 
+                }
+            }
+            System.out.println(cantidadVuelos + "de cada " + vuelos.get(aereolinea).size() + " de la aereolinea " +
+                aereolinea + " vuelan a " + destino + "\n");
+        }
+        cantidadVuelos = 0;
     }
 
     /**
