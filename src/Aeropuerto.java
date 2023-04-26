@@ -32,13 +32,7 @@ public class Aeropuerto {
      * como vuelos estaran ordenados alfabeticamente (Ver resultados de ejecucion)
      */
     public void ordenAerolineasAlfabetico() {
-        for (String aereolinea : vuelos.keySet()) {
-            System.out.println(aereolinea);
-            System.out.println("=========\n");
-            for (Vuelo vuelo : vuelos.get(aereolinea)) {
-                System.out.println(vuelo);
-            }
-        }
+        System.out.println(this);
     }
 
     /**
@@ -147,8 +141,16 @@ public class Aeropuerto {
      * Represetación textual del mapa tal y como se muestra en el enunciado
      */
     public String toString() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for (String aerolinea : vuelos.keySet()) {
+            sb.append(aerolinea).append(":\n");
+            for (Vuelo vuelo : vuelos.get(aerolinea)) {
+                sb.append(vuelo).append("\n");
+            }
+        }
+        return sb.toString();
     }
+
 
     /**
      * Rellena el mapa haciendo uso de un fichero de texto
