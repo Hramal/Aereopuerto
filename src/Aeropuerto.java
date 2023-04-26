@@ -90,15 +90,16 @@ public class Aeropuerto {
         int cantidadVuelos = 0;
         for (String aereolinea : vuelos.keySet()) {
             for (Vuelo vuelo : vuelos.get(aereolinea)) {
-                if(vuelo.getDestino().equals(destino)){
+                if (vuelo.getDestino().equals(destino)) {
                     cantidadVuelos++;
 
                 }
             }
-            System.out.println(cantidadVuelos + "de cada " + vuelos.get(aereolinea).size() + " de la aereolinea " +
-                aereolinea + " vuelan a " + destino + "\n");
+            System.out.println(cantidadVuelos + " de cada " + vuelos.get(aereolinea).size() + " de la aereolinea " +
+                    aereolinea + " vuelan a " + destino + "\n");
+            cantidadVuelos = 0;
         }
-        cantidadVuelos = 0;
+
     }
 
     /**
@@ -109,7 +110,26 @@ public class Aeropuerto {
      * @return numero de vuelos borrados
      */
     public int borrarVuelosEmpresa(String nifEmpresa) {
-        return 0;
+        int cantidadBorrados = 0;
+        Iterator<Map.Entry<String, Set<Vuelo>>> it = vuelos.entrySet().iterator();
+        while (it.hasNext()) {
+            Iterator<Vuelo> it2 = it.next().getValue().iterator();
+            while (it2.hasNext()) {
+                Vuelo vuelo2 = it2.next();
+                if (vuelo2 instanceof Charter) {
+                    String nifComprobado = ((Charter) vuelo2).getNifEmpresa();
+                    if (nifComprobado.equals(nifEmpresa)) {
+                        cantidadBorrados++;
+                        it2.remove();
+
+                    }
+                }
+            }
+
+        }
+
+
+        return cantidadBorrados;
     }
 
     /**
@@ -118,7 +138,7 @@ public class Aeropuerto {
      * @param listaVuelos
      */
     public void imprimirListaVuelos(List<Vuelo> listaVuelos) {
-        for (Vuelo vuelo: listaVuelos) {
+        for (Vuelo vuelo : listaVuelos) {
             System.out.println(vuelo.toString());
         }
     }
