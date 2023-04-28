@@ -144,13 +144,37 @@ public class Aeropuerto {
         StringBuilder sb = new StringBuilder();
         for (String aerolinea : vuelos.keySet()) {
             sb.append(aerolinea).append(":\n");
+            sb.append("=========");
             for (Vuelo vuelo : vuelos.get(aerolinea)) {
                 sb.append(vuelo).append("\n");
+
+                
             }
         }
         return sb.toString();
     }
 
+    public void imprimirPasajerosPorAereolinea(String aereolinea){
+
+        int totalPasajeros = 0;
+        int totalPasajerosRegular = 0;
+        int totalPasajerosCharter = 0;
+        for (String v: vuelos.keySet()) { //Recorro sacando las aereolineas y "almacena" en v
+            if(v.equals(aereolinea)) { //este if es porque sino suma TODOS los pasajeros de TODAS las aereolineas.
+                for (Vuelo vuelo : vuelos.get(v)) {//saco los vuelos de cada aereolinea y "almacena" en vuelo
+                    if (vuelo instanceof Charter) {
+                        totalPasajerosCharter = totalPasajerosCharter + vuelo.getNumPlazas();
+                    } else if (vuelo instanceof Regular) {
+                        totalPasajerosRegular = totalPasajerosRegular + (vuelo.getNumPlazas() - ((Regular) vuelo).getNumPlazasLibres());
+                    }
+                }
+                totalPasajeros = totalPasajerosCharter + totalPasajerosRegular;
+            }
+        }
+
+        System.out.print(totalPasajeros);
+
+    }
 
     /**
      * Rellena el mapa haciendo uso de un fichero de texto
