@@ -148,19 +148,19 @@ public class Aeropuerto {
             for (Vuelo vuelo : vuelos.get(aerolinea)) {
                 sb.append(vuelo).append("\n");
 
-                
+
             }
         }
         return sb.toString();
     }
 
-    public void imprimirPasajerosPorAereolinea(String aereolinea){
+    public void imprimirPasajerosPorAereolinea(String aereolinea) {
 
         int totalPasajeros = 0;
         int totalPasajerosRegular = 0;
         int totalPasajerosCharter = 0;
-        for (String v: vuelos.keySet()) { //Recorro sacando las aereolineas y "almacena" en v
-            if(v.equals(aereolinea)) { //este if es porque sino suma TODOS los pasajeros de TODAS las aereolineas.
+        for (String v : vuelos.keySet()) { //Recorro sacando las aereolineas y "almacena" en v
+            if (v.equals(aereolinea)) { //este if es porque sino suma TODOS los pasajeros de TODAS las aereolineas.
                 for (Vuelo vuelo : vuelos.get(v)) {//saco los vuelos de cada aereolinea y "almacena" en vuelo
                     if (vuelo instanceof Charter) {
                         totalPasajerosCharter = totalPasajerosCharter + vuelo.getNumPlazas();
@@ -174,6 +174,28 @@ public class Aeropuerto {
 
         System.out.print(totalPasajeros);
 
+    }
+
+    public void imprimirVuelosMasPasajerosQueMedia() {
+        for (:) {
+
+        }
+
+
+    }
+
+    private double mediaNumeroPlazas(String aereolina) {
+        double totalNumeroPlazas = 0;
+
+        for (String v : vuelos.keySet()) {
+
+            if (v.equals(aereolina)) {
+                for (Vuelo vuelo : vuelos.get(v)) {
+                    totalNumeroPlazas += vuelo.getNumPlazas();
+                }
+            }
+        }
+        return totalNumeroPlazas / vuelos.get(aereolina).size();
     }
 
     /**
