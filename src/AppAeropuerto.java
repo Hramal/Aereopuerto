@@ -18,6 +18,8 @@ public class AppAeropuerto {
 		aeropuerto.imprimirPasajerosPorAereolinea("AA");
 		System.out.print(" pasajeros.");
 		System.out.println();
+		System.out.println();
+		aeropuerto.imprimirVuelosMasPasajerosQueMedia();
 	}
 
 }

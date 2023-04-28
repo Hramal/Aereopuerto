@@ -177,11 +177,16 @@ public class Aeropuerto {
     }
 
     public void imprimirVuelosMasPasajerosQueMedia() {
-        for (:) {
+        for (String v: vuelos.keySet()) {
+            System.out.println("La media de plazas de los vuelos " + v + " es " + mediaNumeroPlazas(v));
+            System.out.println("Los vuelos de " + v + " con mas plazas que la media son: ");
+            for (Vuelo vuelo: vuelos.get(v)) {
+                if(vuelo.getNumPlazas() >= mediaNumeroPlazas(v)){
+                    System.out.println(vuelo);
+                }
+            }
 
         }
-
-
     }
 
     private double mediaNumeroPlazas(String aereolina) {

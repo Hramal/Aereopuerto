@@ -66,8 +66,6 @@ public abstract class Vuelo implements Comparable<Vuelo> { //La interfaz compara
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        sb.append("Vuelo ").append(this.getClass());
         sb.append("\n------------\n");
         sb.append("\n");
         sb.append("Destino: ").append(getDestino());
