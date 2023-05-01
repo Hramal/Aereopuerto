@@ -3,8 +3,8 @@ public class Regular extends Vuelo {
 
     private int numPlazasLibres;
 
-    public Regular(String destino, String modelo, int numPlazas, int numPlazasLibres) {
-        super(destino, modelo, numPlazas);
+    public Regular(String destino, String modelo, int numPlazas, int numPlazasLibres, double precioBaseBillete) {
+        super(destino, modelo, numPlazas, precioBaseBillete);
         this.numPlazasLibres = numPlazasLibres;
     }
 

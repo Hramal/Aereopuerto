@@ -5,11 +5,13 @@ public abstract class Vuelo implements Comparable<Vuelo> { //La interfaz compara
     private String destino;
     private String modelo;
     private int numPlazas;
+    private double precioBaseBillete;
 
-    public Vuelo(String destino, String modelo, int numPlazas) {
+    public Vuelo(String destino, String modelo, int numPlazas, double precioBaseBillete) {
         this.destino = destino;
         this.modelo = modelo;
         this.numPlazas = numPlazas;
+        this.precioBaseBillete= precioBaseBillete;
     }
 
     @Override

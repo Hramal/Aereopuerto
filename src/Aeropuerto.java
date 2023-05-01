@@ -177,11 +177,11 @@ public class Aeropuerto {
     }
 
     public void imprimirVuelosMasPasajerosQueMedia() {
-        for (String v: vuelos.keySet()) {
+        for (String v : vuelos.keySet()) {
             System.out.println("La media de plazas de los vuelos " + v + " es " + mediaNumeroPlazas(v));
             System.out.println("Los vuelos de " + v + " con mas plazas que la media son: ");
-            for (Vuelo vuelo: vuelos.get(v)) {
-                if(vuelo.getNumPlazas() >= mediaNumeroPlazas(v)){
+            for (Vuelo vuelo : vuelos.get(v)) {
+                if (vuelo.getNumPlazas() >= mediaNumeroPlazas(v)) {
                     System.out.println(vuelo);
                 }
             }
@@ -191,7 +191,6 @@ public class Aeropuerto {
 
     private double mediaNumeroPlazas(String aereolina) {
         double totalNumeroPlazas = 0;
-
         for (String v : vuelos.keySet()) {
 
             if (v.equals(aereolina)) {
@@ -209,7 +208,7 @@ public class Aeropuerto {
     public void leerFicheroCursos() {
         Scanner entrada = null;
         try {
-            entrada = new Scanner(this.getClass().getResourceAsStream("aviones.txt"));
+            entrada = new Scanner(this.getClass().getResourceAsStream("ut5-tarea12ter-aviones.txt"));
             while (entrada.hasNextLine()) {
                 String linea = entrada.nextLine();
                 int pos = linea.indexOf(":");
@@ -218,12 +217,14 @@ public class Aeropuerto {
                 String destino = vuelo[1];
                 String avion = vuelo[2];
                 int plazas = Integer.parseInt(vuelo[3].trim());
+                double precioBaseBillete = 0;
                 if (vuelo[0].equals("R")) {
                     int plazasLibres = Integer.parseInt(vuelo[4].trim());
-                    this.addVuelo(aerolinea, new Regular(destino, avion, plazas, plazasLibres));
+                    precioBaseBillete = Integer.parseInt(vuelo[5].trim());
+                    this.addVuelo(aerolinea, new Regular(destino, avion, plazas, plazasLibres, precioBaseBillete));
                 } else {
                     String nifEmpresa = vuelo[4];
-                    this.addVuelo(aerolinea, new Charter(destino, avion, plazas, nifEmpresa));
+                    this.addVuelo(aerolinea, new Charter(destino, avion, plazas, nifEmpresa, precioBaseBillete));
                 }
             }
         } finally {

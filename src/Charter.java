@@ -2,8 +2,8 @@
 public class Charter extends Vuelo {
     private String nifEmpresa;
 
-    public Charter(String destino, String modelo, int numPlazas, String nifEmpresa) {
-        super(destino, modelo, numPlazas);
+    public Charter(String destino, String modelo, int numPlazas, String nifEmpresa, double precioBaseBillete) {
+        super(destino, modelo, numPlazas, precioBaseBillete);
         this.nifEmpresa = nifEmpresa;
     }
 
