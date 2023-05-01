@@ -20,7 +20,18 @@ public class Charter extends Vuelo {
         StringBuilder sb = new StringBuilder();
         sb.append("Vuelo Charter\n");
         sb.append(super.toString());
+        sb.append("Precio billete: ").append(getPrecioBaseBilletCharter()).append(" $");
+        sb.append("\n");
         sb.append("NIF de empresa: ").append(nifEmpresa).append('\n');
         return sb.toString();
     }
+
+    public double getPrecioBaseBilletCharter(){
+        if(this.getNumPlazas() <200) {
+            return (this.getPrecioBaseBillete() * 1.25 + 50);
+        }else{
+            return this.getPrecioBaseBillete() * 1.25;
+        }
+    }
+
 }

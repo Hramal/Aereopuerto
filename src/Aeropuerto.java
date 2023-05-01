@@ -143,8 +143,8 @@ public class Aeropuerto {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (String aerolinea : vuelos.keySet()) {
-            sb.append(aerolinea).append(":\n");
-            sb.append("=========");
+            sb.append(aerolinea).append("\n");
+            sb.append("=========\n");
             for (Vuelo vuelo : vuelos.get(aerolinea)) {
                 sb.append(vuelo).append("\n");
 
@@ -216,11 +216,11 @@ public class Aeropuerto {
                 String[] vuelo = linea.substring(pos + 1).split(":");
                 String destino = vuelo[1];
                 String avion = vuelo[2];
+                double precioBaseBillete = Integer.parseInt(vuelo[5].trim());
                 int plazas = Integer.parseInt(vuelo[3].trim());
-                double precioBaseBillete = 0;
                 if (vuelo[0].equals("R")) {
                     int plazasLibres = Integer.parseInt(vuelo[4].trim());
-                    precioBaseBillete = Integer.parseInt(vuelo[5].trim());
+
                     this.addVuelo(aerolinea, new Regular(destino, avion, plazas, plazasLibres, precioBaseBillete));
                 } else {
                     String nifEmpresa = vuelo[4];

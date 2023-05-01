@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public abstract class Vuelo implements Comparable<Vuelo> { //La interfaz comparable es para definir un orden
-                                                            // "por defecto" de la clase.
+    // "por defecto" de la clase.
     private String destino;
     private String modelo;
     private int numPlazas;
@@ -11,14 +11,14 @@ public abstract class Vuelo implements Comparable<Vuelo> { //La interfaz compara
         this.destino = destino;
         this.modelo = modelo;
         this.numPlazas = numPlazas;
-        this.precioBaseBillete= precioBaseBillete;
+        this.precioBaseBillete = precioBaseBillete;
     }
 
     @Override
     public int compareTo(Vuelo o) {
-        if (this.destino.compareTo(o.destino) == 0){
-            if(this.modelo.compareTo(o.modelo) == 0){
-                if(this.numPlazas == o.numPlazas){
+        if (this.destino.compareTo(o.destino) == 0) {
+            if (this.modelo.compareTo(o.modelo) == 0) {
+                if (this.numPlazas == o.numPlazas) {
                     return 0;
                 }
                 return (this.numPlazas - o.numPlazas);
@@ -59,6 +59,10 @@ public abstract class Vuelo implements Comparable<Vuelo> { //La interfaz compara
 
     public int getNumPlazas() {
         return numPlazas;
+    }
+
+    public double getPrecioBaseBillete() {
+        return precioBaseBillete;
     }
 
     public void setNumPlazas(int numPlazas) {
